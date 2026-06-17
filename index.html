@@ -1,0 +1,1619 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PLUMA AJENA — El Sistema de Ghostwriting Profesional en Español</title>
+<meta name="description" content="El primer sistema completo en español para ganar dinero escribiendo en LinkedIn y newsletters para ejecutivos, consultores y fundadores. Sin experiencia previa.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+
+/* ============================================================
+   RESET Y VARIABLES
+   ============================================================ */
+:root {
+  --purpura-oscuro: #4B2D7F;
+  --purpura-medio: #7B52AB;
+  --purpura-profundo: #1a0f30;
+  --lila: #EDE7F6;
+  --dorado: #F9C800;
+  --dorado-oscuro: #c9a000;
+  --texto: #2a2230;
+  --texto-suave: #5d5468;
+  --blanco: #ffffff;
+  --borde: #e3dcf2;
+  --verde: #1f9d55;
+  --rojo: #c0392b;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'Inter', -apple-system, sans-serif;
+  color: var(--texto);
+  background: var(--blanco);
+  line-height: 1.65;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1, h2, h3, h4 {
+  font-family: 'Playfair Display', serif;
+  color: var(--purpura-oscuro);
+  line-height: 1.2;
+  font-weight: 700;
+}
+
+a { color: inherit; }
+
+img { max-width: 100%; display: block; }
+
+.contenedor {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+.seccion {
+  padding: 90px 0;
+}
+
+.seccion-alt {
+  background: var(--lila);
+}
+
+.eyebrow {
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--purpura-medio);
+  margin-bottom: 14px;
+  display: block;
+}
+
+.titulo-seccion {
+  font-size: clamp(28px, 4vw, 40px);
+  margin-bottom: 16px;
+}
+
+.subtitulo-seccion {
+  font-size: 18px;
+  color: var(--texto-suave);
+  max-width: 640px;
+  margin-bottom: 50px;
+}
+
+.centrado { text-align: center; margin-left: auto; margin-right: auto; }
+
+.dorado { color: var(--dorado-oscuro); }
+
+/* ============================================================
+   ANIMACIONES DE ENTRADA
+   ============================================================ */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(24px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.fade-up {
+  animation: fadeUp 0.8s ease forwards;
+  opacity: 0;
+}
+
+.fade-up.d1 { animation-delay: 0.1s; }
+.fade-up.d2 { animation-delay: 0.25s; }
+.fade-up.d3 { animation-delay: 0.4s; }
+.fade-up.d4 { animation-delay: 0.55s; }
+.fade-up.d5 { animation-delay: 0.7s; }
+
+@media (prefers-reduced-motion: reduce) {
+  .fade-up {
+    animation: none;
+    opacity: 1;
+    transform: none;
+  }
+  html { scroll-behavior: auto; }
+}
+
+/* Scroll reveal (IntersectionObserver) */
+.reveal {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+@media (prefers-reduced-motion: reduce) {
+  .reveal { opacity: 1; transform: none; transition: none; }
+}
+
+/* ============================================================
+   BOTONES
+   ============================================================ */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 16px 36px;
+  border-radius: 8px;
+  font-weight: 700;
+  font-size: 16px;
+  text-decoration: none;
+  cursor: pointer;
+  border: none;
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.btn:hover { transform: translateY(-2px); }
+
+.btn-dorado {
+  background: linear-gradient(135deg, var(--dorado) 0%, var(--dorado-oscuro) 100%);
+  color: var(--purpura-profundo);
+  box-shadow: 0 8px 24px rgba(201, 160, 0, 0.35);
+}
+.btn-dorado:hover { box-shadow: 0 12px 28px rgba(201, 160, 0, 0.45); }
+
+.btn-outline {
+  background: transparent;
+  color: var(--purpura-oscuro);
+  border: 2px solid var(--purpura-oscuro);
+}
+.btn-outline:hover { background: var(--purpura-oscuro); color: var(--blanco); }
+
+.btn-grande { padding: 20px 48px; font-size: 18px; }
+
+/* ============================================================
+   HERO
+   ============================================================ */
+.hero {
+  background: radial-gradient(ellipse at top, #2a1a52 0%, var(--purpura-profundo) 55%, #120a22 100%);
+  color: var(--blanco);
+  padding: 120px 0 80px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.hero::before {
+  content: "";
+  position: absolute;
+  top: -20%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 800px;
+  height: 800px;
+  background: radial-gradient(circle, rgba(123, 82, 171, 0.25) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+.hero-contenido {
+  position: relative;
+  z-index: 1;
+  max-width: 760px;
+  margin: 0 auto;
+}
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(249, 200, 0, 0.12);
+  border: 1px solid rgba(249, 200, 0, 0.4);
+  color: var(--dorado);
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 8px 20px;
+  border-radius: 30px;
+  margin-bottom: 28px;
+}
+
+.hero h1 {
+  font-size: clamp(34px, 6vw, 56px);
+  color: var(--blanco);
+  margin-bottom: 22px;
+  letter-spacing: -0.01em;
+}
+
+.hero h1 .resaltado {
+  color: var(--dorado);
+  font-style: italic;
+}
+
+.hero-subtitulo {
+  font-size: clamp(17px, 2vw, 20px);
+  color: #d8cdf0;
+  max-width: 580px;
+  margin: 0 auto 36px;
+}
+
+.caja-promesa {
+  background: rgba(255,255,255,0.06);
+  border: 1px solid rgba(249, 200, 0, 0.3);
+  border-radius: 14px;
+  padding: 22px 30px;
+  margin: 0 auto 36px;
+  max-width: 520px;
+  backdrop-filter: blur(6px);
+}
+
+.caja-promesa p {
+  font-family: 'Playfair Display', serif;
+  font-size: 19px;
+  font-style: italic;
+  color: var(--blanco);
+}
+
+.hero-cta {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: 60px;
+}
+
+.hero-cta-nota {
+  font-size: 13px;
+  color: #b9a9dd;
+}
+
+.hero-stats {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 24px;
+  max-width: 760px;
+  margin: 0 auto;
+  border-top: 1px solid rgba(255,255,255,0.12);
+  padding-top: 40px;
+}
+
+.stat-num {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(24px, 3vw, 32px);
+  color: var(--dorado);
+  font-weight: 700;
+}
+
+.stat-label {
+  font-size: 12.5px;
+  color: #b9a9dd;
+  margin-top: 4px;
+  line-height: 1.4;
+}
+
+/* ============================================================
+   EL PROBLEMA
+   ============================================================ */
+.tarjetas-problema {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 28px;
+}
+
+.tarjeta-problema {
+  background: var(--blanco);
+  border: 1px solid var(--borde);
+  border-radius: 14px;
+  padding: 36px 28px;
+  position: relative;
+}
+
+.tarjeta-num {
+  font-family: 'Playfair Display', serif;
+  font-size: 46px;
+  font-weight: 700;
+  color: var(--lila);
+  position: absolute;
+  top: 18px;
+  right: 24px;
+  line-height: 1;
+  z-index: 0;
+}
+
+.tarjeta-problema h3 {
+  font-size: 20px;
+  margin-bottom: 12px;
+  position: relative;
+  z-index: 1;
+}
+
+.tarjeta-problema p {
+  color: var(--texto-suave);
+  font-size: 15px;
+  position: relative;
+  z-index: 1;
+}
+
+/* ============================================================
+   POR QUÉ NO FUNCIONA LO HABITUAL
+   ============================================================ */
+.lista-no-funciona {
+  display: grid;
+  gap: 18px;
+  max-width: 760px;
+  margin: 0 auto;
+}
+
+.item-no-funciona {
+  display: flex;
+  align-items: flex-start;
+  gap: 18px;
+  background: var(--blanco);
+  border: 1px solid var(--borde);
+  border-radius: 12px;
+  padding: 22px 26px;
+}
+
+.icono-x {
+  flex-shrink: 0;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: rgba(192, 57, 43, 0.1);
+  color: var(--rojo);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 800;
+  font-size: 16px;
+}
+
+.item-no-funciona h4 {
+  font-family: 'Inter', sans-serif;
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--texto);
+  margin-bottom: 4px;
+}
+
+.item-no-funciona p {
+  font-size: 14.5px;
+  color: var(--texto-suave);
+}
+
+/* ============================================================
+   PRESENTACIÓN DE LA SOLUCIÓN
+   ============================================================ */
+.caja-solucion {
+  background: linear-gradient(135deg, var(--purpura-oscuro) 0%, var(--purpura-medio) 100%);
+  border-radius: 24px;
+  padding: 64px 50px;
+  color: var(--blanco);
+  text-align: center;
+}
+
+.caja-solucion .eyebrow { color: var(--dorado); }
+
+.caja-solucion h2 {
+  color: var(--blanco);
+  font-size: clamp(28px, 4vw, 38px);
+  max-width: 700px;
+  margin: 0 auto 18px;
+}
+
+.caja-solucion > p {
+  color: #e3d9f7;
+  font-size: 17px;
+  max-width: 620px;
+  margin: 0 auto 50px;
+}
+
+.pilares {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 28px;
+  text-align: left;
+}
+
+.pilar {
+  background: rgba(255,255,255,0.08);
+  border: 1px solid rgba(255,255,255,0.14);
+  border-radius: 16px;
+  padding: 30px 26px;
+}
+
+.pilar-icono {
+  width: 44px;
+  height: 44px;
+  border-radius: 10px;
+  background: var(--dorado);
+  color: var(--purpura-profundo);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 800;
+  font-size: 18px;
+  margin-bottom: 18px;
+}
+
+.pilar h3 {
+  color: var(--blanco);
+  font-size: 18px;
+  margin-bottom: 10px;
+}
+
+.pilar p {
+  color: #d8cdf0;
+  font-size: 14.5px;
+}
+
+/* ============================================================
+   TODO LO QUE INCLUYE
+   ============================================================ */
+.modulos {
+  display: grid;
+  gap: 20px;
+}
+
+.modulo {
+  display: grid;
+  grid-template-columns: 90px 1fr;
+  gap: 28px;
+  background: var(--blanco);
+  border: 1px solid var(--borde);
+  border-radius: 16px;
+  padding: 32px;
+  align-items: start;
+}
+
+.modulo-num {
+  font-family: 'Playfair Display', serif;
+  font-size: 38px;
+  font-weight: 700;
+  color: var(--purpura-medio);
+  opacity: 0.35;
+  line-height: 1;
+}
+
+.modulo h3 {
+  font-size: 21px;
+  margin-bottom: 8px;
+}
+
+.modulo p {
+  color: var(--texto-suave);
+  font-size: 15px;
+  margin-bottom: 14px;
+}
+
+.modulo-lista {
+  list-style: none;
+  display: grid;
+  gap: 8px;
+}
+
+.modulo-lista li {
+  font-size: 14px;
+  color: var(--texto);
+  padding-left: 22px;
+  position: relative;
+}
+
+.modulo-lista li::before {
+  content: "✓";
+  position: absolute;
+  left: 0;
+  color: var(--purpura-medio);
+  font-weight: 700;
+}
+
+.recursos-extra {
+  margin-top: 50px;
+  background: var(--lila);
+  border-radius: 16px;
+  padding: 40px;
+}
+
+.recursos-extra h3 {
+  font-size: 20px;
+  margin-bottom: 22px;
+  text-align: center;
+}
+
+.grid-recursos {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+}
+
+.recurso-chip {
+  background: var(--blanco);
+  border-radius: 10px;
+  padding: 16px 18px;
+  font-size: 14px;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  border: 1px solid var(--borde);
+}
+
+.recurso-chip-icono {
+  width: 26px;
+  height: 26px;
+  border-radius: 6px;
+  background: var(--purpura-oscuro);
+  color: var(--blanco);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px;
+  font-weight: 800;
+  flex-shrink: 0;
+}
+
+/* ============================================================
+   PRÓXIMAMENTE
+   ============================================================ */
+.proximamente-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+
+.proximamente-item {
+  background: var(--blanco);
+  border: 1.5px dashed var(--purpura-medio);
+  border-radius: 14px;
+  padding: 28px 24px;
+  text-align: center;
+}
+
+.proximamente-tag {
+  display: inline-block;
+  background: var(--dorado);
+  color: var(--purpura-profundo);
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 4px 12px;
+  border-radius: 20px;
+  margin-bottom: 14px;
+}
+
+.proximamente-item h4 {
+  font-family: 'Inter', sans-serif;
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--purpura-oscuro);
+  margin-bottom: 8px;
+}
+
+.proximamente-item p {
+  font-size: 13.5px;
+  color: var(--texto-suave);
+}
+
+/* ============================================================
+   PARA QUIÉN ES / NO ES
+   ============================================================ */
+.para-quien {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 28px;
+}
+
+.columna-quien {
+  border-radius: 16px;
+  padding: 36px 32px;
+}
+
+.columna-si {
+  background: rgba(31, 157, 85, 0.06);
+  border: 1.5px solid rgba(31, 157, 85, 0.25);
+}
+
+.columna-no {
+  background: rgba(192, 57, 43, 0.05);
+  border: 1.5px solid rgba(192, 57, 43, 0.2);
+}
+
+.columna-quien h3 {
+  font-size: 19px;
+  margin-bottom: 20px;
+}
+
+.columna-si h3 { color: var(--verde); }
+.columna-no h3 { color: var(--rojo); }
+
+.columna-quien ul {
+  list-style: none;
+  display: grid;
+  gap: 14px;
+}
+
+.columna-quien li {
+  font-size: 15px;
+  padding-left: 26px;
+  position: relative;
+  color: var(--texto);
+}
+
+.columna-si li::before {
+  content: "✓";
+  position: absolute;
+  left: 0;
+  color: var(--verde);
+  font-weight: 800;
+}
+
+.columna-no li::before {
+  content: "✕";
+  position: absolute;
+  left: 0;
+  color: var(--rojo);
+  font-weight: 800;
+}
+
+/* ============================================================
+   PRECIO
+   ============================================================ */
+.caja-precio {
+  max-width: 560px;
+  margin: 0 auto;
+  background: var(--blanco);
+  border: 2px solid var(--dorado);
+  border-radius: 22px;
+  padding: 48px 40px;
+  text-align: center;
+  box-shadow: 0 24px 60px rgba(75, 45, 127, 0.15);
+}
+
+.precio-ancla {
+  font-size: 15px;
+  color: var(--texto-suave);
+  text-decoration: line-through;
+  margin-bottom: 4px;
+}
+
+.precio-final {
+  font-family: 'Playfair Display', serif;
+  font-size: 56px;
+  font-weight: 700;
+  color: var(--purpura-oscuro);
+  margin-bottom: 6px;
+}
+
+.precio-final span {
+  font-size: 22px;
+  font-weight: 500;
+  color: var(--texto-suave);
+}
+
+.precio-nota {
+  font-size: 14px;
+  color: var(--texto-suave);
+  margin-bottom: 30px;
+}
+
+.comparativa-precio {
+  background: var(--lila);
+  border-radius: 12px;
+  padding: 20px;
+  margin-bottom: 28px;
+  display: grid;
+  gap: 10px;
+}
+
+.fila-comparativa {
+  display: flex;
+  justify-content: space-between;
+  font-size: 14px;
+  padding: 6px 0;
+}
+
+.fila-comparativa.activa {
+  font-weight: 700;
+  color: var(--purpura-oscuro);
+  border-top: 1px solid var(--borde);
+  padding-top: 14px;
+  margin-top: 4px;
+}
+
+.cupon-caja {
+  background: rgba(249, 200, 0, 0.12);
+  border: 1.5px dashed var(--dorado-oscuro);
+  border-radius: 10px;
+  padding: 14px 18px;
+  margin-bottom: 28px;
+  font-size: 13.5px;
+  color: var(--purpura-oscuro);
+}
+
+.cupon-caja strong { color: var(--dorado-oscuro); }
+
+.precio-incluye {
+  text-align: left;
+  list-style: none;
+  display: grid;
+  gap: 10px;
+  margin-bottom: 32px;
+}
+
+.precio-incluye li {
+  font-size: 14.5px;
+  padding-left: 24px;
+  position: relative;
+}
+
+.precio-incluye li::before {
+  content: "✓";
+  position: absolute;
+  left: 0;
+  color: var(--purpura-medio);
+  font-weight: 700;
+}
+
+/* ============================================================
+   GARANTÍA
+   ============================================================ */
+.caja-garantia {
+  max-width: 720px;
+  margin: 0 auto;
+  background: var(--lila);
+  border-radius: 18px;
+  padding: 44px 48px;
+  display: flex;
+  align-items: center;
+  gap: 30px;
+}
+
+.garantia-icono {
+  flex-shrink: 0;
+  width: 72px;
+  height: 72px;
+  border-radius: 50%;
+  background: var(--purpura-oscuro);
+  color: var(--blanco);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Playfair Display', serif;
+  font-size: 30px;
+  font-weight: 700;
+}
+
+.caja-garantia h3 {
+  font-size: 19px;
+  margin-bottom: 8px;
+}
+
+.caja-garantia p {
+  font-size: 14.5px;
+  color: var(--texto-suave);
+}
+
+/* ============================================================
+   FAQ
+   ============================================================ */
+.acordeon {
+  max-width: 760px;
+  margin: 0 auto;
+  display: grid;
+  gap: 14px;
+}
+
+.faq-item {
+  background: var(--blanco);
+  border: 1px solid var(--borde);
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.faq-pregunta {
+  width: 100%;
+  background: none;
+  border: none;
+  text-align: left;
+  padding: 22px 26px;
+  font-family: 'Inter', sans-serif;
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--purpura-oscuro);
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+}
+
+.faq-icono {
+  flex-shrink: 0;
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  background: var(--lila);
+  color: var(--purpura-oscuro);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 16px;
+  font-weight: 700;
+  transition: transform 0.3s ease;
+}
+
+.faq-item.abierto .faq-icono {
+  transform: rotate(45deg);
+}
+
+.faq-respuesta {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.35s ease;
+}
+
+.faq-respuesta-inner {
+  padding: 0 26px 24px;
+  font-size: 14.5px;
+  color: var(--texto-suave);
+}
+
+/* ============================================================
+   CTA FINAL
+   ============================================================ */
+.cta-final {
+  background: radial-gradient(ellipse at bottom, #2a1a52 0%, var(--purpura-profundo) 60%);
+  color: var(--blanco);
+  text-align: center;
+  padding: 100px 0;
+}
+
+.cta-final h2 {
+  color: var(--blanco);
+  font-size: clamp(28px, 4vw, 40px);
+  max-width: 640px;
+  margin: 0 auto 18px;
+}
+
+.cta-final p {
+  color: #d8cdf0;
+  font-size: 17px;
+  max-width: 540px;
+  margin: 0 auto 40px;
+}
+
+/* ============================================================
+   FOOTER
+   ============================================================ */
+footer {
+  background: var(--purpura-profundo);
+  color: #b9a9dd;
+  padding: 60px 0 30px;
+}
+
+.footer-marca {
+  font-family: 'Playfair Display', serif;
+  font-size: 22px;
+  color: var(--blanco);
+  margin-bottom: 10px;
+}
+
+.footer-tagline {
+  font-size: 14px;
+  margin-bottom: 40px;
+  max-width: 460px;
+}
+
+.ecosistema-titulo {
+  font-size: 12.5px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--dorado);
+  margin-bottom: 18px;
+}
+
+.ecosistema-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  margin-bottom: 50px;
+}
+
+.ecosistema-item {
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 10px;
+  padding: 18px 20px;
+}
+
+.ecosistema-item strong {
+  display: block;
+  color: var(--blanco);
+  font-size: 14.5px;
+  margin-bottom: 4px;
+}
+
+.ecosistema-item span {
+  font-size: 13px;
+  color: #9886c0;
+}
+
+.footer-legal {
+  border-top: 1px solid rgba(255,255,255,0.1);
+  padding-top: 24px;
+  font-size: 12.5px;
+  color: #8674ab;
+}
+
+/* ============================================================
+   STICKY CTA MÓVIL
+   ============================================================ */
+.sticky-cta {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: var(--blanco);
+  border-top: 1px solid var(--borde);
+  padding: 14px 20px;
+  display: none;
+  z-index: 999;
+  box-shadow: 0 -8px 24px rgba(0,0,0,0.08);
+  transform: translateY(0);
+  transition: transform 0.3s ease;
+}
+
+.sticky-cta.oculto {
+  transform: translateY(120%);
+}
+
+.sticky-cta .btn {
+  width: 100%;
+  padding: 15px;
+}
+
+/* ============================================================
+   RESPONSIVE
+   ============================================================ */
+@media (max-width: 680px) {
+  .seccion { padding: 60px 0; }
+  .hero { padding: 90px 0 60px; }
+  .hero-stats { grid-template-columns: repeat(2, 1fr); gap: 28px 20px; }
+  .tarjetas-problema { grid-template-columns: 1fr; }
+  .pilares { grid-template-columns: 1fr; }
+  .modulo { grid-template-columns: 1fr; gap: 12px; }
+  .modulo-num { font-size: 28px; }
+  .grid-recursos { grid-template-columns: 1fr; }
+  .proximamente-grid { grid-template-columns: 1fr; }
+  .para-quien { grid-template-columns: 1fr; }
+  .caja-garantia { flex-direction: column; text-align: center; padding: 36px 28px; }
+  .ecosistema-grid { grid-template-columns: 1fr; }
+  .caja-solucion { padding: 44px 26px; border-radius: 18px; }
+  .caja-precio { padding: 38px 26px; }
+  .sticky-cta { display: block; }
+}
+
+@media (max-width: 480px) {
+  .hero h1 { font-size: 30px; }
+  .hero-stats { grid-template-columns: 1fr 1fr; }
+  .stat-num { font-size: 22px; }
+  .precio-final { font-size: 44px; }
+  .titulo-seccion { font-size: 26px; }
+  .contenedor { padding: 0 18px; }
+  .caja-promesa p { font-size: 16px; }
+}
+
+</style>
+</head>
+<body>
+
+<!-- ============================================================
+     HERO
+     ============================================================ -->
+<header class="hero">
+  <div class="contenedor hero-contenido">
+    <span class="badge fade-up">Sistema de Ghostwriting Profesional</span>
+
+    <h1 class="fade-up d1">
+      PLUMA AJENA: el sistema para escribir en <span class="resaltado">LinkedIn</span> y newsletters para ejecutivos que pagan
+    </h1>
+
+    <p class="hero-subtitulo fade-up d2">
+      El primer sistema completo en español para convertirte en ghostwriter profesional: posicionamiento, captación de clientes, precios y contrato — todo listo para usar desde hoy.
+    </p>
+
+    <div class="caja-promesa fade-up d3">
+      <p>"Tu primer cliente en 30 días o menos."</p>
+    </div>
+
+    <div class="hero-cta fade-up d4">
+      <a href="#comprar" class="btn btn-dorado btn-grande">Quiero el sistema completo</a>
+      <span class="hero-cta-nota">Pago único · Acceso inmediato · Garantía de 15 días</span>
+    </div>
+
+    <div class="hero-stats fade-up d5">
+      <div>
+        <div class="stat-num">7</div>
+        <div class="stat-label">Capítulos con sistema completo</div>
+      </div>
+      <div>
+        <div class="stat-num">4</div>
+        <div class="stat-label">Scripts de negociación listos</div>
+      </div>
+      <div>
+        <div class="stat-num">5</div>
+        <div class="stat-label">Mercados con tarifas calculadas</div>
+      </div>
+      <div>
+        <div class="stat-num">1º</div>
+        <div class="stat-label">Sistema premium en español</div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- ============================================================
+     EL PROBLEMA
+     ============================================================ -->
+<section class="seccion">
+  <div class="contenedor">
+    <span class="eyebrow centrado">El problema</span>
+    <h2 class="titulo-seccion centrado">Hay un servicio que decenas de miles de profesionales necesitan — y casi nadie lo ofrece en español</h2>
+    <p class="subtitulo-seccion centrado">Los ejecutivos, consultores y fundadores hispanohablantes saben que deberían tener presencia en LinkedIn. El problema nunca es la falta de ideas.</p>
+
+    <div class="tarjetas-problema">
+      <div class="tarjeta-problema reveal">
+        <span class="tarjeta-num">01</span>
+        <h3>Tienen el conocimiento, no el tiempo</h3>
+        <p>Un directivo o consultor tiene años de experiencia y perspectivas valiosas. Lo que no tiene son las dos horas semanales que exige escribir contenido consistente.</p>
+      </div>
+      <div class="tarjeta-problema reveal">
+        <span class="tarjeta-num">02</span>
+        <h3>Publican y no consiguen resultados</h3>
+        <p>Cuando lo intentan solos, el contenido suena genérico. Sin estructura, sin gancho, sin la especificidad que genera conversación real en LinkedIn.</p>
+      </div>
+      <div class="tarjeta-problema reveal">
+        <span class="tarjeta-num">03</span>
+        <h3>No saben que existe esta solución</h3>
+        <p>En el mercado anglosajón, contratar a alguien para escribir tu contenido es una práctica establecida. En España y Latinoamérica, casi nadie ofrece este servicio con seriedad.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     POR QUÉ LO HABITUAL NO FUNCIONA
+     ============================================================ -->
+<section class="seccion seccion-alt">
+  <div class="contenedor">
+    <span class="eyebrow centrado">Por qué las soluciones habituales fallan</span>
+    <h2 class="titulo-seccion centrado">Lo que ya existe no resuelve el problema</h2>
+    <p class="subtitulo-seccion centrado">Antes de construir este sistema, analizamos cómo se enseña ghostwriting en el mercado anglosajón — y por qué nada de eso se traduce bien al contexto hispanohablante.</p>
+
+    <div class="lista-no-funciona">
+      <div class="item-no-funciona reveal">
+        <span class="icono-x">✕</span>
+        <div>
+          <h4>Los community managers no son ghostwriters</h4>
+          <p>Escriben contenido genérico de marca, no capturan la voz individual de un profesional para construir su autoridad personal.</p>
+        </div>
+      </div>
+      <div class="item-no-funciona reveal">
+        <span class="icono-x">✕</span>
+        <div>
+          <h4>Los cursos en inglés no encajan en el contexto de España y Latinoamérica</h4>
+          <p>Enseñan prospección agresiva (cold email masivo, DMs directos) que en España y Latinoamérica genera rechazo en lugar de confianza.</p>
+        </div>
+      </div>
+      <div class="item-no-funciona reveal">
+        <span class="icono-x">✕</span>
+        <div>
+          <h4>Las tarifas no están adaptadas al mercado real</h4>
+          <p>Los recursos en inglés calculan precios en dólares para el poder adquisitivo norteamericano, sin referencia a España, México, Colombia o Argentina.</p>
+        </div>
+      </div>
+      <div class="item-no-funciona reveal">
+        <span class="icono-x">✕</span>
+        <div>
+          <h4>Faltan las herramientas operativas, no solo la teoría</h4>
+          <p>Explican el concepto de ghostwriting pero no entregan contrato, calculadora de tarifas ni scripts de negociación listos para usar.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     PRESENTACIÓN DE LA SOLUCIÓN
+     ============================================================ -->
+<section class="seccion">
+  <div class="contenedor">
+    <div class="caja-solucion reveal">
+      <span class="eyebrow">La solución</span>
+      <h2>PLUMA AJENA es el sistema completo, no solo la teoría</h2>
+      <p>Un documento de trabajo diseñado para llevarte de cero a tu primer cliente de pago en 30 días — y de ahí a un negocio de ghostwriting sostenible en español.</p>
+
+      <div class="pilares">
+        <div class="pilar">
+          <div class="pilar-icono">ES</div>
+          <h3>Pensado para España y Latinoamérica</h3>
+          <p>Scripts, tarifas y casos prácticos calibrados para la cultura de negocios hispanohablante — no traducciones de contenido anglosajón.</p>
+        </div>
+        <div class="pilar">
+          <div class="pilar-icono">→</div>
+          <h3>Sistema, no solo inspiración</h3>
+          <p>Contrato, calculadora de tarifas, propuesta comercial y scripts de negociación listos para copiar y usar desde el primer día.</p>
+        </div>
+        <div class="pilar">
+          <div class="pilar-icono">IA</div>
+          <h3>Integra inteligencia artificial sin perder voz</h3>
+          <p>Un flujo de trabajo probado para usar IA como acelerador, manteniendo la autenticidad que hace que un cliente se sienta representado.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     TODO LO QUE INCLUYE
+     ============================================================ -->
+<section class="seccion seccion-alt">
+  <div class="contenedor">
+    <span class="eyebrow centrado">El contenido completo</span>
+    <h2 class="titulo-seccion centrado">Todo lo que incluye el sistema</h2>
+    <p class="subtitulo-seccion centrado">Siete capítulos que cubren cada etapa: desde no tener ni un cliente hasta gestionar un negocio de ghostwriting de varios miles de euros al mes.</p>
+
+    <div class="modulos">
+      <div class="modulo reveal">
+        <span class="modulo-num">01</span>
+        <div>
+          <h3>Qué es el ghostwriting profesional y por qué ahora</h3>
+          <p>El contexto de mercado, la diferencia entre ghostwriting barato y premium, y por qué España y Latinoamérica son una oportunidad sin explotar.</p>
+          <ul class="modulo-lista">
+            <li>Tabla comparativa: redactor vs. ghostwriter vs. ghostwriter premium</li>
+            <li>Datos de LinkedIn y comportamiento de directivos hispanohablantes</li>
+            <li>Mapa de los 8 perfiles de cliente con mayor capacidad de pago</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="modulo reveal">
+        <span class="modulo-num">02</span>
+        <div>
+          <h3>Tu posicionamiento: el fantasma especializado</h3>
+          <p>Cómo elegir un nicho rentable y construir una frase de posicionamiento que se vende sola.</p>
+          <ul class="modulo-lista">
+            <li>Tabla de 8 nichos con tarifa media y nivel de competencia</li>
+            <li>Fórmula de posicionamiento en una frase, con ejemplos reales</li>
+            <li>Cómo construir autoridad antes de tener el primer cliente</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="modulo reveal">
+        <span class="modulo-num">03</span>
+        <div>
+          <h3>El arte de escribir en voz ajena</h3>
+          <p>El proceso completo de extracción de voz y los formatos que mejor funcionan en LinkedIn en español.</p>
+          <ul class="modulo-lista">
+            <li>Banco de 20 preguntas de entrevista organizadas en 5 categorías</li>
+            <li>Ranking de formatos de post por engagement en España y Latinoamérica</li>
+            <li>Los 3 niveles del ghostwriting y cómo subir de nivel</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="modulo reveal">
+        <span class="modulo-num">04</span>
+        <div>
+          <h3>Tu primer cliente: de cero a contrato</h3>
+          <p>Un método de 30 días adaptado a una cultura de negocios donde la confianza precede a la transacción.</p>
+          <ul class="modulo-lista">
+            <li>Calendario semana a semana del método de los 30 días</li>
+            <li>4 scripts de prospección listos para copiar en español</li>
+            <li>Psicología del cliente: los 4 miedos ocultos y cómo resolverlos</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="modulo reveal">
+        <span class="modulo-num">05</span>
+        <div>
+          <h3>Precios, propuestas y contratos</h3>
+          <p>Cuánto cobrar según tu mercado, cómo proponerlo y cómo protegerte legalmente desde el primer cliente.</p>
+          <ul class="modulo-lista">
+            <li>Calculadora de tarifas para España, México, Colombia y Argentina</li>
+            <li>Plantilla de propuesta comercial lista para enviar</li>
+            <li>Script completo de la llamada de venta, minuto a minuto</li>
+            <li>Contrato de servicios de ghostwriting adaptado a tu país</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="modulo reveal">
+        <span class="modulo-num">06</span>
+        <div>
+          <h3>Tu sistema de trabajo semanal</h3>
+          <p>Cómo gestionar varios clientes en paralelo sin trabajar más de 4 horas diarias.</p>
+          <ul class="modulo-lista">
+            <li>Planificador semanal probado con 3 clientes en retainer</li>
+            <li>Flujo de trabajo con IA que mantiene la autenticidad de voz</li>
+            <li>Prompts de partida listos para Claude o ChatGPT</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="modulo reveal">
+        <span class="modulo-num">07</span>
+        <div>
+          <h3>Escalar a 5.000 €/mes</h3>
+          <p>La hoja de ruta completa desde tu primer cliente hasta un negocio de ghostwriting con libertad real de tiempo.</p>
+          <ul class="modulo-lista">
+            <li>Hoja de ruta de 12 meses con hitos de facturación</li>
+            <li>Cuándo y cómo subir tarifas sin perder al cliente</li>
+            <li>Script de comunicación de subida de precios</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="recursos-extra reveal">
+      <h3>Recursos descargables incluidos</h3>
+      <div class="grid-recursos">
+        <div class="recurso-chip"><span class="recurso-chip-icono">✓</span> Contrato de servicios completo</div>
+        <div class="recurso-chip"><span class="recurso-chip-icono">✓</span> Calculadora de tarifas por país</div>
+        <div class="recurso-chip"><span class="recurso-chip-icono">✓</span> Plantilla de propuesta comercial</div>
+        <div class="recurso-chip"><span class="recurso-chip-icono">✓</span> 4 scripts de prospección</div>
+        <div class="recurso-chip"><span class="recurso-chip-icono">✓</span> Script de llamada de venta</div>
+        <div class="recurso-chip"><span class="recurso-chip-icono">✓</span> Prompts de IA para ghostwriting</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     PRÓXIMAMENTE
+     ============================================================ -->
+<section class="seccion">
+  <div class="contenedor">
+    <span class="eyebrow centrado">Próximamente, sin coste adicional</span>
+    <h2 class="titulo-seccion centrado">El sistema sigue creciendo</h2>
+    <p class="subtitulo-seccion centrado">Quienes compren ahora reciben automáticamente las futuras actualizaciones y ampliaciones del sistema.</p>
+
+    <div class="proximamente-grid">
+      <div class="proximamente-item reveal">
+        <span class="proximamente-tag">Próximamente</span>
+        <h4>Comunidad privada</h4>
+        <p>Espacio para compartir casos, resolver dudas y conseguir feedback de otros ghostwriters en español.</p>
+      </div>
+      <div class="proximamente-item reveal">
+        <span class="proximamente-tag">Próximamente</span>
+        <h4>Bolsa de Trabajo VIP</h4>
+        <p>Acceso a oportunidades de clientes que buscan ghostwriter y que llegan directamente al ecosistema.</p>
+      </div>
+      <div class="proximamente-item reveal">
+        <span class="proximamente-tag">Próximamente</span>
+        <h4>Sesiones en vivo</h4>
+        <p>Encuentros periódicos para revisar propuestas, practicar llamadas de venta y resolver casos reales.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     PARA QUIÉN ES / NO ES
+     ============================================================ -->
+<section class="seccion seccion-alt">
+  <div class="contenedor">
+    <span class="eyebrow centrado">¿Es para ti?</span>
+    <h2 class="titulo-seccion centrado">Para quién está pensado este sistema</h2>
+
+    <div class="para-quien">
+      <div class="columna-quien columna-si reveal">
+        <h3>Esto es para ti si...</h3>
+        <ul>
+          <li>Escribes correctamente en español y quieres convertir esa habilidad en ingresos</li>
+          <li>Eres freelancer, redactor o community manager que busca un servicio de mayor valor</li>
+          <li>Quieres un negocio de servicios con ingresos recurrentes mensuales</li>
+          <li>Te interesa trabajar con perfiles profesionales serios: directivos, consultores, fundadores</li>
+          <li>Prefieres un sistema con plantillas y scripts antes que teoría sin aplicación</li>
+        </ul>
+      </div>
+      <div class="columna-quien columna-no reveal">
+        <h3>Esto no es para ti si...</h3>
+        <ul>
+          <li>Buscas un método de "hazte rico rápido" sin trabajo real detrás</li>
+          <li>No te gusta escribir ni tienes interés en mejorar como redactor</li>
+          <li>Esperas resultados sin dedicar tiempo a prospectar y construir relaciones</li>
+          <li>Buscas escribir libros completos o ficción — este sistema es para contenido digital</li>
+          <li>No estás dispuesto a invertir las primeras semanas en construir tu propia presencia</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     PRECIO
+     ============================================================ -->
+<section class="seccion" id="precio">
+  <div class="contenedor">
+    <span class="eyebrow centrado">Inversión</span>
+    <h2 class="titulo-seccion centrado">Un sistema completo, una sola inversión</h2>
+    <p class="subtitulo-seccion centrado">Sin mensualidades. Sin letra pequeña. Acceso de por vida al documento y a sus futuras actualizaciones.</p>
+
+    <div class="caja-precio reveal">
+      <div class="precio-ancla">Precio de referencia del mercado: 297 €</div>
+      <div class="precio-final">147 € <span>pago único</span></div>
+      <p class="precio-nota">Acceso inmediato tras la compra · Descarga en PDF</p>
+
+      <div class="comparativa-precio">
+        <div class="fila-comparativa"><span>Curso genérico de ghostwriting en inglés</span><span>97–197 $</span></div>
+        <div class="fila-comparativa"><span>Programa con comunidad y mentoría en inglés</span><span>+ 6.000 $</span></div>
+        <div class="fila-comparativa activa"><span>PLUMA AJENA — sistema completo en español</span><span>147 €</span></div>
+      </div>
+
+      <div class="cupon-caja">
+        <strong>Aviso:</strong> Si ya tienes otro producto de este ecosistema, revisa el interior del documento — puede contener un código de descuento exclusivo para este sistema.
+      </div>
+
+      <ul class="precio-incluye">
+        <li>Documento completo de 7 capítulos en PDF de calidad editorial</li>
+        <li>Contrato de servicios adaptado a España y Latinoamérica</li>
+        <li>Calculadora de tarifas para 5 mercados hispanohablantes</li>
+        <li>4 scripts de prospección + script completo de llamada de venta</li>
+        <li>Plantilla de propuesta comercial lista para enviar</li>
+        <li>Acceso de por vida a futuras actualizaciones del sistema</li>
+      </ul>
+
+      <a href="#comprar" class="btn btn-dorado btn-grande" style="width:100%;">Obtener PLUMA AJENA ahora</a>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     GARANTÍA
+     ============================================================ -->
+<section class="seccion seccion-alt">
+  <div class="contenedor">
+    <div class="caja-garantia reveal">
+      <div class="garantia-icono">15</div>
+      <div>
+        <h3>Garantía de 15 días, sin preguntas</h3>
+        <p>Si aplicas el sistema y sientes que no aporta el valor prometido, escribe y se te devuelve el 100% de tu inversión. Sin justificaciones, sin complicaciones.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     FAQ
+     ============================================================ -->
+<section class="seccion">
+  <div class="contenedor">
+    <span class="eyebrow centrado">Preguntas frecuentes</span>
+    <h2 class="titulo-seccion centrado">Todo lo que necesitas saber antes de empezar</h2>
+
+    <div class="acordeon" id="acordeon-faq">
+
+      <div class="faq-item">
+        <button class="faq-pregunta">
+          ¿Necesito experiencia previa como redactor o escritor?
+          <span class="faq-icono">+</span>
+        </button>
+        <div class="faq-respuesta">
+          <div class="faq-respuesta-inner">No necesitas experiencia en ghostwriting, pero sí una base sólida de redacción en español. Si nunca has escrito de forma profesional, el sistema recomienda empezar por el capítulo de escritura y voz antes de salir a buscar clientes.</div>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-pregunta">
+          ¿Cuánto tiempo se tarda en conseguir el primer cliente?
+          <span class="faq-icono">+</span>
+        </button>
+        <div class="faq-respuesta">
+          <div class="faq-respuesta-inner">El sistema incluye un método estructurado de 30 días, desde optimizar tu perfil hasta cerrar la primera llamada de venta. El tiempo real depende de cuánto apliques el plan cada semana, pero está diseñado para resultados en ese marco.</div>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-pregunta">
+          ¿Sirve si vivo en Latinoamérica y no en España?
+          <span class="faq-icono">+</span>
+        </button>
+        <div class="faq-respuesta">
+          <div class="faq-respuesta-inner">Sí. La calculadora de tarifas incluye rangos específicos para España, México, Colombia y Argentina, además de referencias en dólares para clientes que facturan en esa moneda. El sistema está construido pensando en todo el mercado de España y Latinoamérica.</div>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-pregunta">
+          ¿El contrato incluido tiene validez legal en mi país?
+          <span class="faq-icono">+</span>
+        </button>
+        <div class="faq-respuesta">
+          <div class="faq-respuesta-inner">El contrato es una plantilla orientativa redactada con las cláusulas estándar del sector (confidencialidad, propiedad intelectual, condiciones de pago). Para contratos de importe elevado o situaciones complejas, siempre se recomienda revisión con un asesor legal local.</div>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-pregunta">
+          ¿Puedo usar inteligencia artificial y seguir ofreciendo un servicio auténtico?
+          <span class="faq-icono">+</span>
+        </button>
+        <div class="faq-respuesta">
+          <div class="faq-respuesta-inner">Sí, y el sistema dedica un capítulo completo a esto. La IA se usa como acelerador de borradores, nunca como sustituto del criterio editorial. El proceso enseña a mantener la voz auténtica del cliente en cada pieza, incluso usando IA en el flujo de trabajo.</div>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-pregunta">
+          ¿Qué pasa si ya tengo experiencia en redacción de contenidos?
+          <span class="faq-icono">+</span>
+        </button>
+        <div class="faq-respuesta">
+          <div class="faq-respuesta-inner">Perfecto punto de partida. El sistema te ayudará a reposicionarte de "redactor de contenidos" a "ghostwriter premium", lo cual normalmente implica multiplicar tu tarifa por 3 o 4 al cambiar el tipo de servicio y de cliente.</div>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-pregunta">
+          ¿Es un curso en vídeo o un documento?
+          <span class="faq-icono">+</span>
+        </button>
+        <div class="faq-respuesta">
+          <div class="faq-respuesta-inner">Es un documento PDF de calidad editorial. No hay vídeos. Está diseñado para que puedas leerlo, aplicarlo y volver a consultar cada sección como referencia rápida sin depender de plataformas de vídeo ni horarios de clases.</div>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-pregunta">
+          ¿Qué pasa si no estoy satisfecho con el sistema?
+          <span class="faq-icono">+</span>
+        </button>
+        <div class="faq-respuesta">
+          <div class="faq-respuesta-inner">Tienes 15 días de garantía completa. Si lo aplicas y no encuentras valor, se devuelve el 100% de la inversión sin necesidad de justificación.</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     CTA FINAL
+     ============================================================ -->
+<section class="cta-final">
+  <div class="contenedor">
+    <h2>El ghostwriting profesional en español es un mercado sin explotar</h2>
+    <p>La única variable es si tú decides ocuparlo antes de que alguien más lo haga.</p>
+    <a href="#comprar" class="btn btn-dorado btn-grande">Obtener PLUMA AJENA — 147 €</a>
+  </div>
+</section>
+
+<!-- ============================================================
+     FOOTER
+     ============================================================ -->
+<footer>
+  <div class="contenedor">
+    <div class="footer-marca">PLUMA AJENA</div>
+    <p class="footer-tagline">Sistema de ghostwriting profesional en español. Parte del ecosistema de sistemas premium para freelancers y profesionales independientes en España y Latinoamérica.</p>
+
+    <div class="ecosistema-titulo">Otros sistemas del ecosistema</div>
+    <div class="ecosistema-grid">
+      <div class="ecosistema-item">
+        <strong>TARIFA CERO</strong>
+        <span>Cobra lo que mereces sin perder clientes</span>
+      </div>
+      <div class="ecosistema-item">
+        <strong>SISTEMA FREELANCE PRO</strong>
+        <span>El sistema integral para freelancers independientes</span>
+      </div>
+      <div class="ecosistema-item">
+        <strong>PLUMA AJENA</strong>
+        <span>Ghostwriting profesional para LinkedIn y newsletter</span>
+      </div>
+    </div>
+
+    <div class="footer-legal">
+      © 2026 PLUMA AJENA. Todos los derechos reservados. Este sistema es un producto educativo digital y no constituye asesoría legal ni financiera profesional.
+    </div>
+  </div>
+</footer>
+
+<!-- ============================================================
+     STICKY CTA MÓVIL
+     ============================================================ -->
+<div class="sticky-cta" id="sticky-cta">
+  <a href="#comprar" class="btn btn-dorado">Obtener PLUMA AJENA — 147 €</a>
+</div>
+
+<script>
+// ============================================================
+// SCROLL REVEAL (IntersectionObserver)
+// ============================================================
+(function() {
+  var prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  if (!prefersReducedMotion && 'IntersectionObserver' in window) {
+    var revealObserver = new IntersectionObserver(function(entries) {
+      entries.forEach(function(entry) {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          revealObserver.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.15, rootMargin: '0px 0px -40px 0px' });
+
+    document.querySelectorAll('.reveal').forEach(function(el) {
+      revealObserver.observe(el);
+    });
+  } else {
+    document.querySelectorAll('.reveal').forEach(function(el) {
+      el.classList.add('visible');
+    });
+  }
+})();
+
+// ============================================================
+// ACORDEÓN FAQ
+// ============================================================
+(function() {
+  var items = document.querySelectorAll('.faq-item');
+
+  items.forEach(function(item) {
+    var boton = item.querySelector('.faq-pregunta');
+    var respuesta = item.querySelector('.faq-respuesta');
+
+    boton.addEventListener('click', function() {
+      var estaAbierto = item.classList.contains('abierto');
+
+      // Cierra todos los demás (acordeón exclusivo)
+      items.forEach(function(otro) {
+        otro.classList.remove('abierto');
+        otro.querySelector('.faq-respuesta').style.maxHeight = null;
+      });
+
+      if (!estaAbierto) {
+        item.classList.add('abierto');
+        respuesta.style.maxHeight = respuesta.scrollHeight + 'px';
+      }
+    });
+  });
+})();
+
+// ============================================================
+// STICKY CTA: se oculta cerca de la sección de precio y al final
+// ============================================================
+(function() {
+  var stickyCta = document.getElementById('sticky-cta');
+  var precioSeccion = document.getElementById('precio');
+
+  if (!stickyCta || !precioSeccion) return;
+
+  function actualizarVisibilidad() {
+    var scrollY = window.scrollY || window.pageYOffset;
+    var alturaVentana = window.innerHeight;
+    var heroAltura = document.querySelector('.hero').offsetHeight;
+    var precioTop = precioSeccion.offsetTop;
+    var precioBottom = precioTop + precioSeccion.offsetHeight;
+    var posicionActual = scrollY + alturaVentana;
+
+    var dentroDeRangoPrecio = (scrollY + alturaVentana * 0.5) >= precioTop && scrollY <= precioBottom;
+    var antesDelHero = scrollY < heroAltura * 0.6;
+
+    if (antesDelHero || dentroDeRangoPrecio) {
+      stickyCta.classList.add('oculto');
+    } else {
+      stickyCta.classList.remove('oculto');
+    }
+  }
+
+  window.addEventListener('scroll', actualizarVisibilidad, { passive: true });
+  window.addEventListener('resize', actualizarVisibilidad);
+  actualizarVisibilidad();
+})();
+</script>
+
+</body>
+</html>
